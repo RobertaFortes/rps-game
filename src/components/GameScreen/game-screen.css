@@ -1,0 +1,13 @@
+.game-screen__controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .game-screen__controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

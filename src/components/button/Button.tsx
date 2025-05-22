@@ -1,6 +1,6 @@
 import "./button.css"
 
-interface Props {
+interface ButtonProps {
   children: React.ReactNode;
   onClick: () => void;
   disabled?: boolean;
@@ -16,7 +16,7 @@ const Button = ({
   disabled = false,
   type = 'button',
   className = ''
-}: Props) => {
+}: ButtonProps) => {
 
 
   return (

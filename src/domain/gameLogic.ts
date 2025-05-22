@@ -1,0 +1,1 @@
+export type Position = 'rock' | 'paper' | 'scissors'

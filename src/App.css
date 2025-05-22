@@ -4,10 +4,3 @@
   padding: 2rem;
   text-align: center;
 }
-
-.game {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}

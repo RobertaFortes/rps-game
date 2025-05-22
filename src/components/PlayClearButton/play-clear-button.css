@@ -1,0 +1,9 @@
+.play-clear {
+  background-color: black;
+  color: #d4b37f;
+  border-color:#d4b37f;
+  width: 9rem;
+  height: 3rem;
+  border-radius: 3em;
+  box-shadow: #d4b37f;
+}
