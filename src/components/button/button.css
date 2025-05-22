@@ -1,0 +1,84 @@
+button {
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+button:focus, button:hover {
+  outline: none;
+  box-shadow: 0 0 0 2px;
+}
+button:active {
+  transform: scale(0.95);
+}
+button:disabled {
+  cursor: not-allowed;
+  box-shadow: none;
+}
+button:disabled:hover, 
+button:disabled:focus, 
+button:disabled:active {
+  box-shadow: none;
+  transform: none;
+}
+
+.default {
+  background-color: black;
+  color: #d4b37f;
+  border-color:#d4b37f;
+  width: 9rem;
+  height: 3rem;
+  border-radius: 3em;
+  box-shadow: #d4b37f;
+}
+
+.bet {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 10rem;
+  height: 7rem;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.bet span.bet-amount {
+  background-color: white;
+  border: 3px solid blue;
+  color: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rock {
+  background-color: #211f4f;
+  border-color: #304371;
+  color: #2680ea;
+}
+
+.paper {
+  background-color: #1a381d;
+  border-color: #16c359;
+  color: #16b553;
+}
+
+.scissors {
+  background-color: #50091e;
+  border-color: #731c31;
+  color: #e31542;
+}
+
+@media (max-width: 480px) {
+  .rock, .paper, .scissors {
+    width: 100%;
+  }
+}
