@@ -7,7 +7,9 @@ interface HeaderProps {
 const Header = ({ children }: HeaderProps) => {
   return (
     <header className="header">
-      {children}
+      <div className="header-content">
+        {children}
+      </div>
     </header>
   )
 }

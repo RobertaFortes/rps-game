@@ -1,18 +1,16 @@
-import { BET_UNIT } from "../../domain/constants";
-import BetButton from "../BetButton/BetButton"
+import type { Position } from "../../domain/gameLogic";
+import PositionedBetButton from "./PositionedBetButton";
 import "./game-screen.css"
 
-interface GameControlsProps {
-  play: (choice: "rock" | "paper" | "scissors") => void;
-}
 
-const GameControls = ({ play }: GameControlsProps) => {
- 
+const GameControls 
+ = () => {
+  
   return (
     <div className="game-screen__controls">
-      <BetButton choice="rock" amount={BET_UNIT} onClick={() => play("rock")} />
-      <BetButton choice="paper" amount={BET_UNIT} onClick={() => play("paper")} />
-      <BetButton choice="scissors"amount={BET_UNIT} onClick={() => play("scissors")} />
+      {(['rock', 'paper', 'scissors'] as Position[]).map((pos) => (
+        <PositionedBetButton key={pos} position={pos} />
+      ))}
     </div>
   )
 }

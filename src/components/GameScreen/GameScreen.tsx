@@ -1,38 +1,63 @@
-import { useState } from "react"
 import PlayClearButton from "../PlayClearButton/PlayClearButton"
 import GameControls from "./GameControls"
+import { useGameStore } from "../../store/gameStore"
+
+
 import "./game-screen.css"
-import type { Position } from "../../domain/gameLogic"
-import { randomChoice } from "../../utils/randomChoice"
 
 const GameScreen = () => {
-  const [choice, setChoice] = useState<Position | null>(null)
-  const [mode, setMode]   = useState<"play" | "clear">("play")
+  const phase = useGameStore((s) => s.phase)
 
-  const play = (pos: Position) => {
-    console.log(`Jogando com ${pos}`)
-    
-    setChoice(pos)
-  };
-  const handleAction = () => {
-    if (mode === "play") {
-      const test = randomChoice()
-      console.log(`Escolha aleatória: ${test}`);
-      
-      setMode("clear")
-    } else {
-      // limpa escolha e volta ao modo play
-      setChoice(null)
-      setMode("play")
-    }
-  };
+  const bets = useGameStore((s) => s.bets)
+  const computerChoice = useGameStore((s) => s.computerChoice)
+  const result = useGameStore((s) => s.result)
+
+  const start = useGameStore((s) => s.start)
+
+  const confirm = useGameStore((s) => s.confirm)
+  const reset = useGameStore((s) => s.reset)
+
+
+ 
+  console.log(result);
+  
   return (
     <div className="game-screen">
-      <h1>Rock Paper Scissors</h1>
-      <GameControls play={play} />
-      <div className="game-screen__actions">
-        <PlayClearButton mode={mode} onClick={handleAction} />
-      </div>
+   
+      {phase === 'idle' &&  (
+        <button onClick={start}>Start New Round</button>
+      )}
+
+      {phase === 'betting' && (
+        <>
+          <GameControls />
+          <button
+            onClick={confirm}
+            disabled={bets.length === 0}
+            className="confirm-button"
+          >
+            Play
+          </button>
+        </>
+      )}
+
+      {phase === 'resolving' && <p>Resolving… please wait</p>}
+
+      {phase === 'result' && result && (
+        <div className="result-screen">
+          <h2>Computer chose: {computerChoice}</h2>
+          <ul>
+            {result.betResults.map((br) => (
+              <li key={br.position}>
+                You bet {br.amount} on {br.position} —{' '}
+                {br.outcome.toUpperCase()} (payout: {br.payout})
+              </li>
+            ))}
+          </ul>
+          <p>Total returned: {result.totalReturn}</p>
+          <PlayClearButton mode="clear" onClick={reset} />
+        </div>
+      )}
     </div>
   )
 }
