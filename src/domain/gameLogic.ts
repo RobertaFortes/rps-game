@@ -1,18 +1,18 @@
-import { BET_UNIT } from "./constants";
-import type { RoundResult } from "./resolveRound";
+import { BET_UNIT } from './constants'
+import type { RoundResult } from './resolveRound'
 
 export type Position = 'rock' | 'paper' | 'scissors'
 
 export interface Bet {
-  position: Position; 
-  amount: number;
+  position: Position;
+  amount: number
 }
 
 export interface GameContext {
-  balance: number;
-  bets: Bet[];
-  computerChoice?: Position;
-  result?: RoundResult;
+  balance: number
+  bets: Bet[]
+  computerChoice?: Position
+  result?: RoundResult
 }
 
 export function hasSufficientBalance(context: GameContext): boolean {

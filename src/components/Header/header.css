@@ -5,7 +5,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  font-weight: 700;
   display: flex;
 }
 
@@ -14,9 +13,5 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 2rem;
-}
-
-.header-item__label {
-  color: #d4b37f;
+  gap: 3rem;
 }

@@ -1,12 +1,12 @@
 import "./button.css"
 
 interface ButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-  disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
-  variant?: 'default' | 'bet';
-  className?: string;
+  children: React.ReactNode
+  onClick: () => void
+  disabled?: boolean
+  type?: 'button' | 'submit' | 'reset'
+  variant?: 'default' | 'bet'
+  className?: string
 }
 
 const Button = ({
@@ -17,8 +17,6 @@ const Button = ({
   type = 'button',
   className = ''
 }: ButtonProps) => {
-
-
   return (
     <button
       type={type}

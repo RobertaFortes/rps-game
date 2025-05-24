@@ -1,63 +1,61 @@
-import PlayClearButton from "../PlayClearButton/PlayClearButton"
-import GameControls from "./GameControls"
-import { useGameStore } from "../../store/gameStore"
+import PlayClearButton from '../PlayClearButton/PlayClearButton'
+import GameControls from './GameControls'
+import { useGameStore } from '../../store/gameStore'
+import { pickPlayerTitleChoice } from '../../utils/pickPlayerTitleChoice'
+import './game-screen.css'
 
-
-import "./game-screen.css"
 
 const GameScreen = () => {
   const phase = useGameStore((s) => s.phase)
-
   const bets = useGameStore((s) => s.bets)
   const computerChoice = useGameStore((s) => s.computerChoice)
   const result = useGameStore((s) => s.result)
-
-  const start = useGameStore((s) => s.start)
-
+  const profit = useGameStore(s => s.profit)
   const confirm = useGameStore((s) => s.confirm)
   const reset = useGameStore((s) => s.reset)
+  const isDisabled = bets?.length === 0 || phase === 'versus'
 
-
- 
-  console.log(result);
+  const playerTitle = pickPlayerTitleChoice(result)
+  const winnerTitle  =
+  result?.outcome === 'tie'
+    ? 'game tied'
+    : `${result?.positionWinner!.toUpperCase()} won`
+    const winSubtitle = (result?.outcome !== 'tie' && result?.outcome !== 'loss') && (
+      <>
+        <span className="primary-color">you win</span> {profit}
+      </>
+    )
   
   return (
     <div className="game-screen">
-   
-      {phase === 'idle' &&  (
-        <button onClick={start}>Start New Round</button>
+      <div className="result-screen">
+      {(phase === 'idle' || phase === 'betting') && <p className='primary-color'>Pick your positions</p>}
+      {phase === 'versus' && computerChoice && playerTitle && (
+        <h2 className="versus-title">
+          <span>{computerChoice}</span> 
+          <span className='primary-color small-font'>vs</span>
+          <span>{playerTitle}</span>
+        </h2>
       )}
-
-      {phase === 'betting' && (
+      {phase === 'result' && result && (
         <>
-          <GameControls />
-          <button
-            onClick={confirm}
-            disabled={bets.length === 0}
-            className="confirm-button"
-          >
-            Play
-          </button>
+         <h2 className='result-screen__title'>
+          {winnerTitle}
+         </h2>
+          <p>
+            {winSubtitle}
+          </p>
         </>
       )}
-
-      {phase === 'resolving' && <p>Resolving… please wait</p>}
-
-      {phase === 'result' && result && (
-        <div className="result-screen">
-          <h2>Computer chose: {computerChoice}</h2>
-          <ul>
-            {result.betResults.map((br) => (
-              <li key={br.position}>
-                You bet {br.amount} on {br.position} —{' '}
-                {br.outcome.toUpperCase()} (payout: {br.payout})
-              </li>
-            ))}
-          </ul>
-          <p>Total returned: {result.totalReturn}</p>
-          <PlayClearButton mode="clear" onClick={reset} />
-        </div>
+      </div>
+      <GameControls />
+      {(phase !== 'result') ? (
+        <PlayClearButton mode="play" onClick={confirm} disabled={isDisabled} />
+      ) : (
+        <PlayClearButton mode="clear" onClick={reset} />
       )}
+
+      
     </div>
   )
 }

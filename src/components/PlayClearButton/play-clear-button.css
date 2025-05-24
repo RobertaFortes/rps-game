@@ -3,7 +3,12 @@
   color: #d4b37f;
   border-color:#d4b37f;
   width: 9rem;
-  height: 3rem;
+  height: 4rem;
   border-radius: 3em;
   box-shadow: #d4b37f;
+}
+
+.play-clear:disabled {
+ opacity: 0.5;
+  cursor: not-allowed;  
 }

@@ -1,7 +1,7 @@
-import "./header.css"
+import './header.css'
 
 interface HeaderProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const Header = ({ children }: HeaderProps) => {
