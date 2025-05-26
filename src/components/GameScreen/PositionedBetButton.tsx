@@ -15,8 +15,6 @@ const PositionedBetButton = ({
   disabled,
   onClick
 }: PositionedBetButtonProps) => {
-
-console.log('Rendering PositionedBetButton', position, amount)
   return (
     <BetButton choice={position} amount={amount} disabled={disabled} onClick={onClick} />
   )

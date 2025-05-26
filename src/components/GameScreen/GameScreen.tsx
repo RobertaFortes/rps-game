@@ -1,7 +1,7 @@
 import PlayClearButton from '../PlayClearButton/PlayClearButton'
 import GameControls from './GameControls'
 import { useGameStore } from '../../store/gameStore'
-import { pickPlayerTitleChoice } from '../../utils/pickPlayerTitleChoice'
+import { pickPlayerChoice } from '../../utils/pickPlayerChoice'
 import './game-screen.css'
 
 
@@ -15,35 +15,45 @@ const GameScreen = () => {
   const reset = useGameStore((s) => s.reset)
   const isDisabled = bets?.length === 0 || phase === 'versus'
 
-  const playerTitle = pickPlayerTitleChoice(result)
-  const winnerTitle  =
+  const playerChoice = pickPlayerChoice(result)
+  const mainLabel  =
   result?.outcome === 'tie'
-    ? 'game tied'
-    : `${result?.positionWinner!.toUpperCase()} won`
-    const winSubtitle = (result?.outcome !== 'tie' && result?.outcome !== 'loss') && (
-      <>
-        <span className="primary-color">you win</span> {profit}
-      </>
-    )
+    ? 'No winner'
+    : result?.outcome === 'win'
+    ? `${result.positionWinner} won`
+    : `${result?.computerChoice} won`
+
+  const subLabel = result?.outcome === 'tie'
+    ? 'bet refunded'
+    : result?.outcome === 'win'
+    ?  <><span className="primary-color">you win</span> {profit}</>
+    : ''
+  
+
+
+    console.log('result', result);
+    console.log('computerChoice', computerChoice);
+  console.log('playerChoice', playerChoice);
+    
   
   return (
     <div className="game-screen">
       <div className="result-screen">
       {(phase === 'idle' || phase === 'betting') && <p className='primary-color'>Pick your positions</p>}
-      {phase === 'versus' && computerChoice && playerTitle && (
+      {phase === 'versus' && computerChoice && playerChoice && (
         <h2 className="versus-title">
           <span>{computerChoice}</span> 
           <span className='primary-color small-font'>vs</span>
-          <span>{playerTitle}</span>
+          <span>{playerChoice}</span>
         </h2>
       )}
       {phase === 'result' && result && (
         <>
          <h2 className='result-screen__title'>
-          {winnerTitle}
+          {mainLabel}
          </h2>
           <p>
-            {winSubtitle}
+            {subLabel}
           </p>
         </>
       )}

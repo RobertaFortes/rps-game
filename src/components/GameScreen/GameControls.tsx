@@ -8,15 +8,15 @@ import { BET_UNIT } from '../../domain/constants'
 
 const GameControls = () => {
   const selector = (s: GameState) => ({
-    phase:    s.phase,
-    bets:     s.bets,
-    balance:  s.balance,
+    phase: s.phase,
+    bets: s.bets,
+    balance: s.balance,
     placeBet: s.placeBet
   } as const) 
   const { phase, bets, balance, placeBet } = useGameStore(selector, shallow)
 
   const maxBetsReached = bets.length >= 2
-  const hasBalance     = balance >= BET_UNIT
+  const hasBalance = balance >= BET_UNIT
 
   const getProps = (pos: Position) => {
     

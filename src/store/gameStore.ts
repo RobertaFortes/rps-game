@@ -64,7 +64,7 @@ export const useGameStore = createWithEqualityFn<GameState>((set, get) => ({
         balance: balance + round.totalReturn,
         profit: winAmount
       })
-    }, 2000)
+    }, 3000)
   },
 
 
