@@ -4,7 +4,6 @@ import { useGameStore } from '../../store/gameStore'
 import { pickPlayerChoice } from '../../utils/pickPlayerChoice'
 import './game-screen.css'
 
-
 const GameScreen = () => {
   const phase = useGameStore((s) => s.phase)
   const bets = useGameStore((s) => s.bets)
@@ -28,13 +27,6 @@ const GameScreen = () => {
     ?  <><span className="primary-color">you win</span> {profit}</>
     : <span className="primary-color">computer win</span>
 
-    console.log(result);
-    console.log(`Player choice: ${playerChoice}`);
-    console.log(`Computer choice: ${computerChoice}`);
-    
-    
-    
-  
   return (
     <div className="game-screen">
       <div className={`game-screen__label ${phase === 'idle' || phase === 'betting' ? 'label-initial' : 'label-result'}`}>

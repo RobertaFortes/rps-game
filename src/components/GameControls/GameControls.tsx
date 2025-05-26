@@ -1,10 +1,10 @@
-import { shallow } from 'zustand/shallow'
-import type { Position } from "../../domain/gameLogic"
-import PositionedBetButton from "./PositionedBetButton"
-import { useGameStore, type GameState } from '../../store/gameStore'
-import { BET_UNIT } from '../../domain/constants'
-import "./game-controls.css"
 import { useMemo } from 'react'
+import { shallow } from 'zustand/shallow'
+import PositionedBetButton from "./PositionedBetButton"
+import type { Position } from "../../domain/gameLogic"
+import { BET_UNIT } from '../../domain/constants'
+import { useGameStore, type GameState } from '../../store/gameStore'
+import "./game-controls.css"
 
 
 const positions: Position[] = ['rock', 'paper', 'scissors']

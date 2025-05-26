@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import type { Position } from '../../domain/gameLogic'
 import BetButton from '../BetButton/BetButton'
+import type { Position } from '../../domain/gameLogic'
 
 interface PositionedBetButtonProps {
   position: Position
@@ -27,5 +27,6 @@ const PositionedBetButton = ({
     />
   )
 }
+
 export default memo(PositionedBetButton)
   
