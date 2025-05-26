@@ -58,13 +58,9 @@ npm run preview
 
 Unit tests are written with Vitest and React Testing Library
 
-#### Run tests once
+#### Run tests
 ```sh
 npm test
-```
-#### Watch mode
-```sh
-npm test:watch
 ```
 
 ## Tech Stack
