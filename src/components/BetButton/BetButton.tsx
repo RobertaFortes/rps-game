@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import Button from '../Button/Button'
 import './bet-button.css'
 
@@ -30,4 +29,4 @@ const BetButtonComponent = ({
   )
 }
 
-export default memo(BetButtonComponent)
+export default BetButtonComponent
