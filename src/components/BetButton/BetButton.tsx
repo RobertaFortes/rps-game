@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import Button from '../Button/Button'
+import Button from '../button/Button'
 import './bet-button.css'
 
 interface BetButtonProps {

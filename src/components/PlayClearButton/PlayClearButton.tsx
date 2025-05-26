@@ -1,4 +1,4 @@
-import Button from '../Button/Button'
+import Button from '../button/Button'
 import './play-clear-button.css'
 
 interface PlayClearButtonProps {
