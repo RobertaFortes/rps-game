@@ -7,14 +7,21 @@ interface BetButtonProps {
   choice: "rock" | "paper" | "scissors"
   onClick: () => void
   disabled?: boolean
+  isWinner?: boolean
 }
 
-const BetButtonComponent = ({amount, choice, onClick, disabled}: BetButtonProps) => {
+const BetButtonComponent = ({
+  amount,
+  choice,
+  onClick,
+  disabled,
+  isWinner
+}: BetButtonProps) => {
   return (
     <Button
       onClick={onClick}
       variant="bet"
-      className={choice}
+      className={`${choice} ${isWinner ? 'isWinner' : ''}`}
       disabled={disabled}
     >
     <span className={`bet-amount ${amount > 0 && 'active'}`}>{amount}</span>
@@ -22,9 +29,5 @@ const BetButtonComponent = ({amount, choice, onClick, disabled}: BetButtonProps)
   </Button>
   )
 }
- 
-  
-  
-
 
 export default memo(BetButtonComponent)

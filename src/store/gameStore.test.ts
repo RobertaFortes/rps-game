@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { useGameStore } from './gameStore'
 import { act } from '@testing-library/react'
 
-
 function resetStore() {
   useGameStore.setState({
     phase: 'idle',
@@ -26,12 +25,11 @@ describe('gameStore', () => {
     resetStore()
   })
 
-  it('placeBet: from the first bet it goes from idle to betting and deducts balance', () => {
+  it('placeBet: from the first bet it goes from phase idle to betting and deducts balance', () => {
     const { placeBet, phase, balance, bets } = useGameStore.getState()
     expect(phase).toBe('idle')
     expect(balance).toBe(5000)
     expect(bets).toHaveLength(0)
-
     act(() => placeBet('rock'))
     const state1 = useGameStore.getState()
     expect(state1.phase).toBe('betting')
@@ -49,7 +47,7 @@ describe('gameStore', () => {
     expect(balance).toBe(4000)
   })
 
-  it('confirm: change phase versus -> result, update balance and profit', () => {
+  it('confirm: change phase versus to phase result, update balance and profit', () => {
     const rnd = useGameStore.getState().confirm
     const { placeBet } = useGameStore.getState()
     act(() => placeBet('paper'))

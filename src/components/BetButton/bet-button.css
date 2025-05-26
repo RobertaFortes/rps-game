@@ -35,7 +35,7 @@
 
 .paper {
   background-color: #1a381d;
-  border-color: #16c359;
+  border-color: #0e8f3c;
   color: #16b553;
 }
 
@@ -43,6 +43,10 @@
   background-color: #50091e;
   border-color: #731c31;
   color: #e31542;
+}
+
+.isWinner {
+  box-shadow: 0 0 0 2px;
 }
 
 @media (max-width: 480px) {

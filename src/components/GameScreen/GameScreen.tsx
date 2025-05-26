@@ -14,7 +14,6 @@ const GameScreen = () => {
   const confirm = useGameStore((s) => s.confirm)
   const reset = useGameStore((s) => s.reset)
   const isDisabled = bets?.length === 0 || phase === 'versus'
-
   const playerChoice = pickPlayerChoice(result)
   const mainLabel  =
   result?.outcome === 'tie'
@@ -24,24 +23,17 @@ const GameScreen = () => {
     : `${result?.computerChoice} won`
 
   const subLabel = result?.outcome === 'tie'
-    ? 'bet refunded'
+    ? <span className="primary-color">bet refunded</span>
     : result?.outcome === 'win'
     ?  <><span className="primary-color">you win</span> {profit}</>
-    : ''
-  
-
-
-    console.log('result', result);
-    console.log('computerChoice', computerChoice);
-  console.log('playerChoice', playerChoice);
-    
+    : <span className="primary-color">computer win</span>
   
   return (
     <div className="game-screen">
-      <div className="result-screen">
+      <div className={`game-screen__label ${phase === 'idle' || phase === 'betting' ? 'label-initial' : 'label-result'}`}>
       {(phase === 'idle' || phase === 'betting') && <p className='primary-color'>Pick your positions</p>}
       {phase === 'versus' && computerChoice && playerChoice && (
-        <h2 className="versus-title">
+        <h2 className="label-result-versus__title">
           <span>{computerChoice}</span> 
           <span className='primary-color small-font'>vs</span>
           <span>{playerChoice}</span>
@@ -49,10 +41,10 @@ const GameScreen = () => {
       )}
       {phase === 'result' && result && (
         <>
-         <h2 className='result-screen__title'>
+         <h2 className='label-result__title'>
           {mainLabel}
          </h2>
-          <p>
+          <p className='label-result__subtitle'>
             {subLabel}
           </p>
         </>
@@ -64,8 +56,6 @@ const GameScreen = () => {
       ) : (
         <PlayClearButton mode="clear" onClick={reset} />
       )}
-
-      
     </div>
   )
 }

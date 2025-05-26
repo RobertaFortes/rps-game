@@ -7,16 +7,24 @@ interface PositionedBetButtonProps {
   amount: number
   disabled: boolean
   onClick: () => void
+  isWinner?: boolean
 }
 
 const PositionedBetButton = ({
   position,
   amount,
   disabled,
-  onClick
+  onClick,
+  isWinner
 }: PositionedBetButtonProps) => {
   return (
-    <BetButton choice={position} amount={amount} disabled={disabled} onClick={onClick} />
+    <BetButton
+      choice={position}
+      amount={amount}
+      disabled={disabled}
+      onClick={onClick}
+      isWinner={isWinner}
+    />
   )
 }
 export default memo(PositionedBetButton)

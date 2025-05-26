@@ -33,7 +33,7 @@ describe('resolveRound()', () => {
     expect(result.outcome).toBe('win')
     expect(result.totalReturn).toBe(500 * 3 + 500)
   })
-  it('should handle two bets: win+tloss', () => {
+  it('should handle two bets: win+loss', () => {
     const bets: Bet[] = [
       { position: 'rock', amount: 500 },
       { position: 'paper', amount: 500 }

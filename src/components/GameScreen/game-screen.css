@@ -1,25 +1,40 @@
-
-
 .game-screen__controls {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin: 70px 0;
+  margin: 0 0 70px;
 }
 
-.versus-title {
+.game-screen__label {
+  min-height: 7vh;
+}
+
+.label-result-versus__title {
   display: flex;
   gap: 2rem;
   align-items: center;
   width: 100%;
   justify-content: center;
+  font-size: 2.2rem;
 }
 
-.result-screen__title {
+.label-result__title {
   color: #16c359;
+  font-size: 2.2rem;
 }
 
+.label-result__subtitle {
+  font-size: 1.2rem;
+}
+/* 
+.label-initial {
+  margin-bottom: 20px;
+} */
+
+.label-result { 
+  margin-bottom: 70px;
+}
 @media (max-width: 480px) {
   .game-screen {
     margin-top: 60px;
@@ -27,8 +42,19 @@
   .game-screen__controls {
     flex-direction: column;
     gap: 1rem;
+    margin: 40px 0;
   }
-  .versus-title {
+  .label-result {
+    margin-bottom: 40px;
+}
+  .label-result-versus__title {
     gap: 1rem;
+    font-size: 1.5rem;
+  }
+  .label-result__title {
+    font-size: 1.5rem;
+  }
+  .label-result__subtitle {
+    font-size: 1rem;
   }
 }

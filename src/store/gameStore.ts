@@ -39,7 +39,6 @@ export const useGameStore = createWithEqualityFn<GameState>((set, get) => ({
       { balance, bets },
       position
     )
-
     set({
       bets: newBets,
       balance: newBal,
@@ -47,13 +46,11 @@ export const useGameStore = createWithEqualityFn<GameState>((set, get) => ({
     })
   },
 
-
   confirm: () => {
     const { bets, balance, phase } = get()
     if (phase !== 'betting' || bets.length === 0) return
     const comp = randomChoice()
     const round = domainResolveRound(bets, comp)
-
     set({ phase: 'versus', computerChoice: comp, result: round })
     const winAmount = round.betResults
     .filter(b => b.outcome === 'win')
@@ -66,7 +63,6 @@ export const useGameStore = createWithEqualityFn<GameState>((set, get) => ({
       })
     }, 3000)
   },
-
 
   reset: () =>
     set({
