@@ -27,7 +27,7 @@ A simple Rock, Paper, Scissors web app built with React, TypeScript, and Zustand
 
 ### Prerequisites
 ```sh
-Node.js ≥ 16
+Node.js ≥ 20
 npm
 ```
 
