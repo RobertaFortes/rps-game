@@ -7,13 +7,15 @@ A simple Rock, Paper, Scissors web app built with React, TypeScript, and Zustand
     src/
     ├── components/           # React UI components
     │   ├── BetButton/
+    │   ├── Button/
     │   ├── GameControls/
-    │   ├── GameScreen/
     │   ├── Header/
     │   └── PlayClearButton/
     ├── domain/               # Pure game logic and types
     │   ├── gameLogic.ts
     │   └── resolveRound.ts
+    ├── screens/              # High-level flow
+    │   └── GameScreen/
     ├── store/                # Zustand store
     │   └── gameStore.ts
     ├── utils/                # Utility functions

@@ -2,8 +2,8 @@ import { shallow } from 'zustand/shallow'
 import type { Position } from "../../domain/gameLogic"
 import PositionedBetButton from "./PositionedBetButton"
 import { useGameStore, type GameState } from '../../store/gameStore'
-import "./game-screen.css"
 import { BET_UNIT } from '../../domain/constants'
+import "./game-controls.css"
 
 const GameControls = () => {
   const selector = (s: GameState) => ({

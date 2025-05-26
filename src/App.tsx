@@ -1,5 +1,5 @@
 import './App.css'
-import GameScreen from './components/GameScreen/GameScreen'
+import GameScreen from './screens/GameScreen/GameScreen'
 import Header from './components/Header/Header'
 import BalanceHeaderItem from './components/Header/items/BalanceHeaderItem'
 import BetHeaderItem from './components/Header/items/BetHeaderItem'
