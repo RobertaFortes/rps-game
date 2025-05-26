@@ -27,6 +27,9 @@ const GameScreen = () => {
     : result?.outcome === 'win'
     ?  <><span className="primary-color">you win</span> {profit}</>
     : <span className="primary-color">computer win</span>
+
+    console.log(result);
+    
   
   return (
     <div className="game-screen">
